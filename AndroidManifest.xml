@@ -13,5 +13,6 @@
         </activity>
         <activity android:name=".LeaderBoardActivity"/>
         <activity android:name=".ChallengeActivity"/>
+        <activity android:name=".PlayerProfileActivity"/>
     </application>
 </manifest> 
