@@ -1,6 +1,7 @@
 package com.js.mobile;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
@@ -12,7 +13,7 @@ import android.widget.*;
  * Time: 4:24 PM
  * To change this template use File | Settings | File Templates.
  */
-public class LeaderBoard extends ListActivity {
+public class LeaderBoardActivity extends ListActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,9 +26,8 @@ public class LeaderBoard extends ListActivity {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                // When clicked, show a toast with the TextView text
-                Toast.makeText(getApplicationContext(), ((TextView) view).getText(),
-                        Toast.LENGTH_SHORT).show();
+                Intent myIntent = new Intent(LeaderBoardActivity.this, ChallengeActivity.class);
+                LeaderBoardActivity.this.startActivity(myIntent);
             }
         });
     }
