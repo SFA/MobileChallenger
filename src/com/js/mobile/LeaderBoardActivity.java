@@ -26,7 +26,7 @@ public class LeaderBoardActivity extends ListActivity {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                Intent myIntent = new Intent(LeaderBoardActivity.this, ChallengeActivity.class);
+                Intent myIntent = new Intent(LeaderBoardActivity.this, PlayerProfileActivity.class);
                 LeaderBoardActivity.this.startActivity(myIntent);
             }
         });
