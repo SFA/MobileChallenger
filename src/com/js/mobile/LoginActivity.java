@@ -25,7 +25,7 @@ public class LoginActivity extends Activity
 
         //this is the action listener
         launch.setOnClickListener(new View.OnClickListener() {
-
+            @Override
             public void onClick(View view) {
                 //This gets the resources in the xml file and assigns it to a local variable of type EditText
                 EditText usernameEditText = (EditText) findViewById(R.id.txt_username);
@@ -42,6 +42,7 @@ public class LoginActivity extends Activity
                 } else {
                     //Display the username and the password in string format
                     PopUp("Logging in", "Username: " + sUserName + "\nPassword: " + sPassword);
+                    DataHandler.doLogin(sUserName, sPassword);
                     Intent myIntent = new Intent(getBaseContext(), LeaderBoardActivity.class);
                     myIntent.putExtra("userName", sUserName);
                     startActivity(myIntent);
@@ -56,14 +57,14 @@ public class LoginActivity extends Activity
                 .setTitle(title)
                 .setMessage(message)
                 .setPositiveButton("YES", new DialogInterface.OnClickListener() {
-
+                    @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         //do stuff onclick of YES
 //                        finish();
                     }
                 })
                 .setNegativeButton("NO", new DialogInterface.OnClickListener() {
-
+                    @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         //do stuff onclick of CANCEL
                         Toast.makeText(getBaseContext(), "You clicked CANCEL", Toast.LENGTH_SHORT).show();
