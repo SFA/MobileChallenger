@@ -11,17 +11,40 @@ public final class R {
     public static final class attr {
     }
     public static final class id {
+        public static final int buttonChallenge=0x7f040018;
         public static final int login_button=0x7f040005;
         public static final int password_text=0x7f040003;
+        public static final int txtFirstName=0x7f040012;
+        public static final int txtLastName=0x7f040015;
+        public static final int txtRank=0x7f04000b;
+        public static final int txtRecord=0x7f04000e;
+        public static final int txtUsername=0x7f040009;
         public static final int txt_password=0x7f040004;
         public static final int txt_username=0x7f040002;
         public static final int username_text=0x7f040001;
         public static final int welcome_text=0x7f040000;
+        public static final int widget647=0x7f040006;
+        public static final int widget648=0x7f040007;
+        public static final int widget649=0x7f040008;
+        public static final int widget650=0x7f04000a;
+        public static final int widget652=0x7f04000c;
+        public static final int widget653=0x7f04000d;
+        public static final int widget655=0x7f04000f;
+        public static final int widget656=0x7f040010;
+        public static final int widget657=0x7f040011;
+        public static final int widget659=0x7f040013;
+        public static final int widget660=0x7f040014;
+        public static final int widget662=0x7f040016;
+        public static final int widget663=0x7f040017;
+        public static final int widget665=0x7f040019;
+        public static final int widget666=0x7f04001a;
+        public static final int widget687=0x7f04001b;
     }
     public static final class layout {
         public static final int list_item=0x7f020000;
         public static final int login=0x7f020001;
         public static final int main=0x7f020002;
+        public static final int player_profile=0x7f020003;
     }
     public static final class string {
         public static final int app_name=0x7f030000;

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+        android:id="@+id/widget647"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#ff000044"
+        android:orientation="vertical"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <TableRow
+            android:id="@+id/widget648"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+    </TableRow>
+    <TableRow
+            android:id="@+id/widget649"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:minHeight="50px">
+        <TextView
+                android:id="@+id/txtUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Adrian Peterson"
+                android:textSize="30px"/>
+    </TableRow>
+    <TableRow
+            android:id="@+id/widget649"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <TextView
+                android:id="@+id/widget650"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rank:" />
+        <TextView
+                android:id="@+id/txtRank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+    </TableRow>
+    <TableRow
+            android:id="@+id/widget652"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <TextView
+                android:id="@+id/widget653"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Record:" />
+        <TextView
+                android:id="@+id/txtRecord"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+    </TableRow>
+    <TableRow
+            android:id="@+id/widget655"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:minHeight="10px">
+    </TableRow>
+    <TableRow
+            android:id="@+id/widget656"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <TextView
+                android:id="@+id/widget657"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="First Name:" />
+        <TextView
+                android:id="@+id/txtFirstName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+    </TableRow>
+    <TableRow
+            android:id="@+id/widget659"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <TextView
+                android:id="@+id/widget660"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Last Name:" />
+        <TextView
+                android:id="@+id/txtLastName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+    </TableRow>
+    <TableRow
+            android:id="@+id/widget662"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+    </TableRow>
+    <TableRow
+            android:id="@+id/widget663"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <Button
+                android:id="@+id/buttonChallenge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="false"
+                android:text="Challenge" />
+    </TableRow>
+    <TableRow
+            android:id="@+id/widget665"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+    </TableRow>
+    <TableRow
+            android:id="@+id/widget666"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+    </TableRow>
+    <ListView
+            android:id="@+id/widget687"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+</TableLayout>

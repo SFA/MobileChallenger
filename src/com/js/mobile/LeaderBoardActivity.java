@@ -27,6 +27,11 @@ public class LeaderBoardActivity extends ListActivity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 Intent myIntent = new Intent(LeaderBoardActivity.this, PlayerProfileActivity.class);
+                String userName = (String) getListAdapter().getItem(position);
+                
+                String[] extras = {userName, Integer.toString(position)};
+                
+                myIntent.putExtra("extras", extras);
                 LeaderBoardActivity.this.startActivity(myIntent);
             }
         });
