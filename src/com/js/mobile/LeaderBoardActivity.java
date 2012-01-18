@@ -18,7 +18,7 @@ public class LeaderBoardActivity extends ListActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setListAdapter(new ArrayAdapter<String>(this, R.layout.list_item, PLAYERS));
+        setListAdapter(new ArrayAdapter<String>(this, R.layout.list_item, retrievePlayers()));
 
         ListView lv = getListView();
         lv.setTextFilterEnabled(true);
@@ -27,28 +27,34 @@ public class LeaderBoardActivity extends ListActivity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 Intent myIntent = new Intent(LeaderBoardActivity.this, PlayerProfileActivity.class);
-                String userName = (String) getListAdapter().getItem(position);
+                String profileName = (String) getListAdapter().getItem(position);
+                String totalPlayers = Integer.toString(getListAdapter().getCount());
                 
-                String[] extras = {userName, Integer.toString(position)};
+                String[] extras = {profileName, Integer.toString(++position), totalPlayers};
                 
                 myIntent.putExtra("extras", extras);
                 LeaderBoardActivity.this.startActivity(myIntent);
             }
         });
     }
+    
+    private String[] retrievePlayers() {
+        // TODO: Replace with DataHandler calls
 
-    static final String[] PLAYERS = new String[] {
-            "Superman", "JGyselinck", "SAhlers", "CodeMonkey", "GSDExpert",
-            "Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra",
-            "Angola", "Anguilla", "Antarctica", "Antigua and Barbuda", "Argentina",
-            "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan",
-            "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium",
-            "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia",
-            "Bosnia and Herzegovina", "Botswana", "Bouvet Island", "Brazil", "British Indian Ocean Territory",
-            "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burundi",
-            "Cote d'Ivoire", "Cambodia", "Cameroon", "Canada", "Cape Verde",
-            "Cayman Islands", "Central African Republic", "Chad", "Chile", "China",
-            "Christmas Island", "Cocos (Keeling) Islands", "Colombia", "Comoros", "Congo"
-    };
+        final String[] PLAYERS = new String[] {
+                "Superman", "JGyselinck", "SAhlers", "CodeMonkey", "GSDExpert",
+                "Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra",
+                "Angola", "Anguilla", "Antarctica", "Antigua and Barbuda", "Argentina",
+                "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan",
+                "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium",
+                "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia",
+                "Bosnia and Herzegovina", "Botswana", "Bouvet Island", "Brazil", "British Indian Ocean Territory",
+                "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burundi",
+                "Cote d'Ivoire", "Cambodia", "Cameroon", "Canada", "Cape Verde",
+                "Cayman Islands", "Central African Republic", "Chad", "Chile", "China",
+                "Christmas Island", "Cocos (Keeling) Islands", "Colombia", "Comoros", "Congo"
+        };
 
+        return PLAYERS;
+    }
 }

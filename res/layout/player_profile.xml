@@ -3,6 +3,7 @@
         android:id="@+id/widget647"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:stretchColumns="*"
         android:background="#ff000044"
         android:orientation="vertical"
         xmlns:android="http://schemas.android.com/apk/res/android">
@@ -19,11 +20,12 @@
             android:orientation="horizontal"
             android:minHeight="50px">
         <TextView
-                android:id="@+id/txtUsername"
+                android:id="@+id/txtProfileName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Adrian Peterson"
-                android:textSize="30px"/>
+                android:textSize="30px"
+                android:layout_span="2" />
     </TableRow>
     <TableRow
             android:id="@+id/widget649"

@@ -1,8 +1,11 @@
 package com.js.mobile;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,8 +19,9 @@ import android.widget.TextView;
  * To change this template use File | Settings | File Templates.
  */
 public class PlayerProfileActivity extends Activity {
-    
+
     String userName;
+    String profileName;
     
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,14 +32,15 @@ public class PlayerProfileActivity extends Activity {
         Intent intent = getIntent();
 
         String[] s = intent.getStringArrayExtra("extras");
-        userName = s[0];
+        profileName = s[0];
         String rank = s[1];
+        String totalPlayers = s[2];
 
-        TextView userNameTextView = (TextView) findViewById(R.id.txtUsername);
-        userNameTextView.setText(userName);
+        TextView profileNameTextView = (TextView) findViewById(R.id.txtProfileName);
+        profileNameTextView.setText(profileName);
 
         TextView rankTextView = (TextView) findViewById(R.id.txtRank);
-        rankTextView.setText(rank);
+        rankTextView.setText(rank + " of " + totalPlayers);
 
         //get the button resource in the xml file and assign it to a local variable of type Button
         Button challenge = (Button)findViewById(R.id.buttonChallenge);
@@ -44,9 +49,21 @@ public class PlayerProfileActivity extends Activity {
         challenge.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
-                //This gets the resources in the xml file and assigns it to a local variable of type EditText
-                TextView rankTextView = (TextView) findViewById(R.id.txtRank);
-                rankTextView.setText("Hello");
+
+                new AlertDialog.Builder( PlayerProfileActivity.this )
+                        .setTitle("Challenge")
+                        .setMessage( "Are you sure you want to challenge " + profileName + "?")
+                        .setPositiveButton( "Bring it on!", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                Log.d("AlertDialog", "Positive");
+                            }
+                        })
+                        .setNegativeButton( "I'm scared", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                Log.d( "AlertDialog", "Negative" );
+                            }
+                        } )
+                        .show();
 
             }
         }); //end of launch.setOnclickListener
