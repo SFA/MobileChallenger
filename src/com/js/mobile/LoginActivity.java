@@ -42,6 +42,7 @@ public class LoginActivity extends Activity
                 } else {
                     //Display the username and the password in string format
                     PopUp("Logging in", "Username: " + sUserName + "\nPassword: " + sPassword);
+                    DataHandler.doLogin(sUserName, sPassword);
                     Intent myIntent = new Intent(getBaseContext(), LeaderBoardActivity.class);
                     myIntent.putExtra("userName", sUserName);
                     startActivity(myIntent);
