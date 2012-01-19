@@ -3,7 +3,12 @@
 --   site:      Oracle Database 10g
 --   type:      Oracle Database 10g
 
+create schema mobilechallenger;
 
+CREATE USER 'mobilechallenger'@'localhost' IDENTIFIED BY 'sparcmobile';
+GRANT ALL ON MOBILECHALLENGER.* TO mobilechallenger;
+
+use mobilechallenger;
 
 CREATE TABLE Challenge 
     ( 
