@@ -20,8 +20,9 @@ import android.widget.TextView;
  */
 public class PlayerProfileActivity extends Activity {
 
-    String userName;
-    String profileName;
+    private String userName;
+    private String profileName;
+    private Button challenge = null;
     
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +36,7 @@ public class PlayerProfileActivity extends Activity {
         profileName = s[0];
         String rank = s[1];
         String totalPlayers = s[2];
+        userName = s[3];
 
         TextView profileNameTextView = (TextView) findViewById(R.id.txtProfileName);
         profileNameTextView.setText(profileName);
@@ -43,7 +45,11 @@ public class PlayerProfileActivity extends Activity {
         rankTextView.setText(rank + " of " + totalPlayers);
 
         //get the button resource in the xml file and assign it to a local variable of type Button
-        Button challenge = (Button)findViewById(R.id.buttonChallenge);
+        challenge = (Button)findViewById(R.id.buttonChallenge);
+        if(userName.equalsIgnoreCase(profileName)) {
+            challenge.setClickable(false);
+            challenge.setVisibility(View.GONE);
+        }
 
         //this is the action listener
         challenge.setOnClickListener(new View.OnClickListener() {
@@ -55,17 +61,25 @@ public class PlayerProfileActivity extends Activity {
                         .setMessage( "Are you sure you want to challenge " + profileName + "?")
                         .setPositiveButton( "Bring it on!", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                Log.d("AlertDialog", "Positive");
+                                requestAChallenge();
+                                challenge.setClickable(false);
                             }
                         })
                         .setNegativeButton( "I'm scared", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                Log.d( "AlertDialog", "Negative" );
+                                TextView tempTextView = (TextView) findViewById(R.id.txtFirstName);
+                                tempTextView.setText("");
                             }
                         } )
                         .show();
 
             }
         }); //end of launch.setOnclickListener
+    }
+
+    private void requestAChallenge() {
+        // TODO: Replace with DataHandler call(s)
+        TextView tempTextView = (TextView) findViewById(R.id.txtFirstName);
+        tempTextView.setText(userName + " VS " + profileName);
     }
 }

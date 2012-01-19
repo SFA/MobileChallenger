@@ -14,6 +14,9 @@ import android.widget.*;
  * To change this template use File | Settings | File Templates.
  */
 public class LeaderBoardActivity extends ListActivity {
+    
+    private String userName;
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +25,9 @@ public class LeaderBoardActivity extends ListActivity {
 
         ListView lv = getListView();
         lv.setTextFilterEnabled(true);
+        
+        Intent intent = getIntent();
+        userName = intent.getStringExtra("userName");
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
@@ -30,7 +36,7 @@ public class LeaderBoardActivity extends ListActivity {
                 String profileName = (String) getListAdapter().getItem(position);
                 String totalPlayers = Integer.toString(getListAdapter().getCount());
                 
-                String[] extras = {profileName, Integer.toString(++position), totalPlayers};
+                String[] extras = {profileName, Integer.toString(++position), totalPlayers, userName};
                 
                 myIntent.putExtra("extras", extras);
                 LeaderBoardActivity.this.startActivity(myIntent);
