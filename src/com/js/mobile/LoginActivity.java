@@ -20,8 +20,11 @@ public class LoginActivity extends Activity
         //load up the layout
         setContentView(R.layout.login);
 
-        //get the button resource in the xml file and assign it to a local variable of type Button
+        //get the login button resource in the xml file and assign it to a local variable of type Button
         Button launch = (Button)findViewById(R.id.login_button);
+        
+        //get the register button resource in the xml file and assign it to a local var or type button
+        Button register = (Button)findViewById(R.id.register_button);
 
         //this is the action listener
         launch.setOnClickListener(new View.OnClickListener() {
@@ -40,16 +43,24 @@ public class LoginActivity extends Activity
                 if (usernameEditText == null || passwordEditText == null) {
                     PopUp("Crap!", "Couldn't find the 'txt_username' or 'txt_password' EditView in main.xml");
                 } else {
-                    //Display the username and the password in string format
-                    PopUp("Logging in", "Username: " + sUserName + "\nPassword: " + sPassword);
-                    DataHandler.doLogin(sUserName, sPassword);
-                    Intent myIntent = new Intent(getBaseContext(), LeaderBoardActivity.class);
-                    myIntent.putExtra("userName", sUserName);
-                    startActivity(myIntent);
-//                    setContentView(R.layout.main);
+                    if(DataHandler.doLogin(sUserName, sPassword)){
+                        Intent myIntent = new Intent(getBaseContext(), LeaderBoardActivity.class);
+                        myIntent.putExtra("userName", sUserName);
+                        startActivity(myIntent);
+                    } else {
+                        PopUp("Login Failed", "The username or password supplied was incorrect.  Please try again!");
+                    }
                 }
             }
         }); //end of launch.setOnclickListener
+        
+        register.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent anotherIntent = new Intent(getBaseContext(), RegisterActivity.class);
+                startActivity(anotherIntent);
+            }
+        });
     }
 
     public void PopUp(String title, String message){

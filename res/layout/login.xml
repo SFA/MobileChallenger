@@ -42,4 +42,10 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/txt_password"/>
+    <Button android:id="@+id/register_button"
+            android:text="Register!"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/login_button"/>
 </RelativeLayout>
