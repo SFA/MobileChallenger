@@ -29,7 +29,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class DataHandler {
-    private static String baseUrl = "http://192.168.1.75/mobilechallenger/";
+    private static String baseUrl = "http://192.168.0.203/mobilechallenger/";
     
     public static boolean doLogin(String username, String password){
         String result = null;
@@ -71,6 +71,26 @@ public class DataHandler {
             nameValuePairs.add(new BasicNameValuePair("email", email));
             nameValuePairs.add(new BasicNameValuePair("fname", fname));
             nameValuePairs.add(new BasicNameValuePair("pass", lname));
+            request.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            result = doPostRequest(request);
+            return true;
+        } catch (Exception ex){
+            ex.printStackTrace();
+            return false;
+        }
+    }
+    
+    public static boolean doChallenge(String challengee, String challenger) {
+        String result = null;
+        HttpPost request = null;
+
+        try{
+            String url = baseUrl + "submitChallenge.php";
+            request = new HttpPost(url);
+            request.setURI(new URI(url));
+            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+            nameValuePairs.add(new BasicNameValuePair("challengee", challengee));
+            nameValuePairs.add(new BasicNameValuePair("challenger", challenger));
             request.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             result = doPostRequest(request);
             return true;
