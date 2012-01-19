@@ -93,11 +93,33 @@ public class DataHandler {
             nameValuePairs.add(new BasicNameValuePair("challenger", challenger));
             request.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             result = doPostRequest(request);
+            sendChallengeEmail(challengee, challenger);
             return true;
         } catch (Exception ex){
             ex.printStackTrace();
             return false;
         }
+    }
+    
+    private static boolean sendChallengeEmail(String challengee, String challenger) {
+        return true;
+//        String result = null;
+//        HttpPost request = null;
+//
+//        try{
+//            String url = baseUrl + "sendChallengeEmail.php";
+//            request = new HttpPost(url);
+//            request.setURI(new URI(url));
+//            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+//            nameValuePairs.add(new BasicNameValuePair("challengee", challengee));
+//            nameValuePairs.add(new BasicNameValuePair("challenger", challenger));
+//            request.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+//            result = doPostRequest(request);
+//            return true;
+//        } catch (Exception ex){
+//            ex.printStackTrace();
+//            return false;
+//        }
     }
     
     private static String doPostRequest(HttpPost request){

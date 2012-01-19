@@ -78,6 +78,6 @@ public class PlayerProfileActivity extends Activity {
     }
 
     private void requestAChallenge() {
-        DataHandler.doChallenge(profileName.toLowerCase(), userName.toLowerCase());
+        DataHandler.doChallenge(profileName, userName);
     }
 }
