@@ -3,8 +3,7 @@
     $mysqli = new mysqli("localhost", "mobilechallenger", "sparcmobile", "mobilechallenger");
     $user = $_POST['user'];
     $pass = $_POST['pass'];
-$preparedStatement = $mysqli->prepare("SELECT * FROM mobilechallengeuser where username = ?");
-//    $preparedStatement = $mysqli->prepare("SELECT * FROM mobilechallengeuser");
+    $preparedStatement = $mysqli->prepare("SELECT * FROM mobilechallengeuser where username = ?");
     $preparedStatement->bind_param("s", $user);
     $preparedStatement->execute();
 
