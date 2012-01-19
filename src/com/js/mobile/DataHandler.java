@@ -70,7 +70,7 @@ public class DataHandler {
             nameValuePairs.add(new BasicNameValuePair("pass", password));
             nameValuePairs.add(new BasicNameValuePair("email", email));
             nameValuePairs.add(new BasicNameValuePair("fname", fname));
-            nameValuePairs.add(new BasicNameValuePair("pass", lname));
+            nameValuePairs.add(new BasicNameValuePair("lname", lname));
             request.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             result = doPostRequest(request);
             return true;

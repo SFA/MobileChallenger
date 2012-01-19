@@ -1,6 +1,7 @@
 package com.js.mobile;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -28,11 +29,15 @@ public class RegisterActivity extends Activity {
         regButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditText username = (EditText)findViewById(R.id.txt_username);
-                EditText password = (EditText)findViewById(R.id.txt_password);
-                EditText fname = (EditText)findViewById(R.id.txt_fname);
-                EditText lname = (EditText)findViewById(R.id.txt_lname);
-                EditText email = (EditText)findViewById(R.id.txt_email);
+                String username = ((EditText)findViewById(R.id.txt_username)).getText().toString();
+                String password = ((EditText)findViewById(R.id.txt_password)).getText().toString();
+                String fname = ((EditText)findViewById(R.id.txt_fname)).getText().toString();
+                String lname = ((EditText)findViewById(R.id.txt_lname)).getText().toString();
+                String email = ((EditText)findViewById(R.id.txt_email)).getText().toString();
+
+                DataHandler.doRegistration(username, password, fname, lname, email);
+                Intent myIntent = new Intent(getBaseContext(), LoginActivity.class);
+                startActivity(myIntent);
             }
         });
     }
