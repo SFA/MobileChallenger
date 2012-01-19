@@ -29,7 +29,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class DataHandler {
-    private static String baseUrl = "http://192.168.1.75/mobilechallenger/";
+    private static String baseUrl = "http://10.0.2.2/mobilechallenger/";
     
     public static boolean doLogin(String username, String password){
         String result = null;
