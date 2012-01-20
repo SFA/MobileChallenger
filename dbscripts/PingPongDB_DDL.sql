@@ -12,59 +12,63 @@ use mobilechallenger;
 
 CREATE TABLE Challenge 
     ( 
-     id BIGINT  NOT NULL , 
+     id BIGINT  NOT NULL AUTO_INCREMENT, 
      challengee VARCHAR(50)  NOT NULL , 
-     challenger VARCHAR(50)  NOT NULL 
+     challenger VARCHAR(50)  NOT NULL,
+     PRIMARY KEY (id)
     ) 
 ;
 
 
 
-ALTER TABLE Challenge 
-    ADD CONSTRAINT Challenge_PK PRIMARY KEY ( id ) ;
+#ALTER TABLE Challenge 
+#    ADD CONSTRAINT Challenge_PK PRIMARY KEY ( id ) ;
 
 
 CREATE TABLE Game 
     ( 
-     id BIGINT  NOT NULL , 
-     match_id BIGINT  NOT NULL 
+     id BIGINT  NOT NULL AUTO_INCREMENT, 
+     match_id BIGINT  NOT NULL,
+     PRIMARY KEY (id) 
     ) 
 ;
 
 
 
-ALTER TABLE Game 
-    ADD CONSTRAINT Game_PK PRIMARY KEY ( id ) ;
+#ALTER TABLE Game 
+#    ADD CONSTRAINT Game_PK PRIMARY KEY ( id ) ;
 
 
 CREATE TABLE Matches 
     ( 
-     id BIGINT  NOT NULL , 
+     id BIGINT  NOT NULL AUTO_INCREMENT, 
      challenge_id BIGINT  NOT NULL , 
-     result VARCHAR(15) 
+     result VARCHAR(15),
+     PRIMARY KEY (id) 
     ) 
 ;
 
 
 
-ALTER TABLE Matches 
-    ADD CONSTRAINT Match_PK PRIMARY KEY ( id ) ;
+#ALTER TABLE Matches 
+#    ADD CONSTRAINT Match_PK PRIMARY KEY ( id ) ;
 
 
 CREATE TABLE Outcome 
     ( 
-     id BIGINT  NOT NULL , 
+     id BIGINT  NOT NULL AUTO_INCREMENT, 
      game_id BIGINT  NOT NULL , 
      result VARCHAR(15) , 
      challenger_score BIGINT , 
-     challengee_score BIGINT 
+     challengee_score BIGINT,
+     PRIMARY KEY (id) 
     ) 
 ;
 
 
 
-ALTER TABLE Outcome 
-    ADD CONSTRAINT Outcome_PK PRIMARY KEY ( id ) ;
+#ALTER TABLE Outcome 
+#    ADD CONSTRAINT Outcome_PK PRIMARY KEY ( id ) ;
 
 
 CREATE TABLE MobileChallengeUser 
@@ -73,14 +77,15 @@ CREATE TABLE MobileChallengeUser
      password VARCHAR(50) NOT NULL,
      email VARCHAR(150)  NOT NULL , 
      first_name VARCHAR(50) , 
-     last_name VARCHAR(50) 
+     last_name VARCHAR(50) ,
+     PRIMARY KEY (username)
     ) 
 ;
 
 
 
-ALTER TABLE MobileChallengeUser 
-    ADD CONSTRAINT User_PK PRIMARY KEY ( username ) ;
+#ALTER TABLE MobileChallengeUser 
+#    ADD CONSTRAINT User_PK PRIMARY KEY ( username ) ;
 
 
 
@@ -182,3 +187,4 @@ ALTER TABLE Outcome
 -- 
 -- ERRORS                                   0
 -- WARNINGS                                 0
+

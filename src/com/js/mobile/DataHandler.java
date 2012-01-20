@@ -12,7 +12,6 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -20,10 +19,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URI;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.List;
-
 
 /**
  * Created by IntelliJ IDEA.
@@ -34,8 +30,6 @@ import java.util.List;
  */
 public class DataHandler {
     private static String baseUrl = "http://10.0.2.2/mobilechallenger/";
-    
-    private static Hashtable<String, User> users = new Hashtable<String, User>();
     
     public static boolean doLogin(String username, String password){
         String result = null;
@@ -61,57 +55,6 @@ public class DataHandler {
             return false;
         }
 
-    }
-
-    public static void retrieveUsers() {
-        String result = null;
-        HttpPost request = null;
-
-        try{
-            String url = baseUrl + "getUsers.php";
-            request = new HttpPost(url);
-        } catch (Exception ex){
-            ex.printStackTrace();
-        }
-
-        result = doPostRequest(request);
-
-        JSONObject myjson = null;
-        JSONArray the_json_array = null;
-        try {
-            myjson = new JSONObject(result);
-            the_json_array = myjson.getJSONArray("data");
-        } catch (JSONException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
-
-        JSONObject mJsonObject = new JSONObject();
-        try {
-            for(int i=0; i < the_json_array.length(); i++) {
-                mJsonObject = the_json_array.getJSONObject(i);
-                String username = mJsonObject.getString("username");
-                String fname = mJsonObject.getString("fname");
-                String lname = mJsonObject.getString("lname");
-                String password = mJsonObject.getString("password");
-                String email = mJsonObject.getString("email");
-                User user = new User(username, lname, fname, password, email);
-                users.put(username, user);
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
-    }
-    
-    public static List<String> getAllUsers() {
-        ArrayList<String> userNames = new ArrayList<String>();
-        for(User u : users.values()) {
-            userNames.add(u.getUserName());
-        }
-        return userNames;
-    }
-    
-    public static User getUser(String userName) {
-        return users.get(userName);
     }
 
     public static boolean doRegistration(String username, String password, String fname, String lname, String email){
@@ -157,7 +100,7 @@ public class DataHandler {
             return false;
         }
     }
-
+    
     private static boolean sendChallengeEmail(String challengee, String challenger) {
         String result = null;
         HttpPost request = null;
