@@ -78,8 +78,6 @@ public class PlayerProfileActivity extends Activity {
     }
 
     private void requestAChallenge() {
-        // TODO: Replace with DataHandler call(s)
-        TextView tempTextView = (TextView) findViewById(R.id.txtFirstName);
-        tempTextView.setText(userName + " VS " + profileName);
+        DataHandler.doChallenge(profileName, userName);
     }
 }

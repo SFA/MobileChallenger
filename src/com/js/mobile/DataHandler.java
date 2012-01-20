@@ -29,9 +29,8 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class DataHandler {
-//    private static String baseUrl = "http://10.0.2.2/mobilechallenger/";
-    private static String baseUrl = "http://192.168.1.75/mobilechallenger/";
-
+    private static String baseUrl = "http://10.0.2.2/mobilechallenger/";
+    
     public static boolean doLogin(String username, String password){
         String result = null;
         HttpPost request = null;
@@ -71,7 +70,7 @@ public class DataHandler {
             nameValuePairs.add(new BasicNameValuePair("pass", password));
             nameValuePairs.add(new BasicNameValuePair("email", email));
             nameValuePairs.add(new BasicNameValuePair("fname", fname));
-            nameValuePairs.add(new BasicNameValuePair("lname", lname));
+            nameValuePairs.add(new BasicNameValuePair("pass", lname));
             request.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             result = doPostRequest(request);
             return true;
@@ -79,6 +78,48 @@ public class DataHandler {
             ex.printStackTrace();
             return false;
         }
+    }
+    
+    public static boolean doChallenge(String challengee, String challenger) {
+        String result = null;
+        HttpPost request = null;
+
+        try{
+            String url = baseUrl + "submitChallenge.php";
+            request = new HttpPost(url);
+            request.setURI(new URI(url));
+            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+            nameValuePairs.add(new BasicNameValuePair("challengee", challengee));
+            nameValuePairs.add(new BasicNameValuePair("challenger", challenger));
+            request.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            result = doPostRequest(request);
+            sendChallengeEmail(challengee, challenger);
+            return true;
+        } catch (Exception ex){
+            ex.printStackTrace();
+            return false;
+        }
+    }
+    
+    private static boolean sendChallengeEmail(String challengee, String challenger) {
+        return true;
+//        String result = null;
+//        HttpPost request = null;
+//
+//        try{
+//            String url = baseUrl + "sendChallengeEmail.php";
+//            request = new HttpPost(url);
+//            request.setURI(new URI(url));
+//            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+//            nameValuePairs.add(new BasicNameValuePair("challengee", challengee));
+//            nameValuePairs.add(new BasicNameValuePair("challenger", challenger));
+//            request.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+//            result = doPostRequest(request);
+//            return true;
+//        } catch (Exception ex){
+//            ex.printStackTrace();
+//            return false;
+//        }
     }
     
     private static String doPostRequest(HttpPost request){
