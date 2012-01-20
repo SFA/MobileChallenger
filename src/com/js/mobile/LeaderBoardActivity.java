@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 
+import java.util.List;
+
 /**
  * Created by IntelliJ IDEA.
  * User: steveahlers
@@ -44,23 +46,10 @@ public class LeaderBoardActivity extends ListActivity {
         });
     }
     
-    private String[] retrievePlayers() {
-        // TODO: Replace with DataHandler calls
+    private List<String> retrievePlayers() {
+        // Load up the Users in DataHandler
+        DataHandler.retrieveUsers();
 
-        final String[] PLAYERS = new String[] {
-                "Superman", "JGyselinck", "SAhlers", "CodeMonkey", "GSDExpert",
-                "Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra",
-                "Angola", "Anguilla", "Antarctica", "Antigua and Barbuda", "Argentina",
-                "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan",
-                "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium",
-                "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia",
-                "Bosnia and Herzegovina", "Botswana", "Bouvet Island", "Brazil", "British Indian Ocean Territory",
-                "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burundi",
-                "Cote d'Ivoire", "Cambodia", "Cameroon", "Canada", "Cape Verde",
-                "Cayman Islands", "Central African Republic", "Chad", "Chile", "China",
-                "Christmas Island", "Cocos (Keeling) Islands", "Colombia", "Comoros", "Congo"
-        };
-
-        return PLAYERS;
+        return DataHandler.getAllUsers();
     }
 }

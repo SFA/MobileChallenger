@@ -16,5 +16,6 @@
         <activity android:name=".ChallengeActivity"/>
         <activity android:name=".PlayerProfileActivity"/>
         <activity android:name=".RegisterActivity"/>
+        <activity android:name=".ChallengesActivity"/>
     </application>
 </manifest> 
