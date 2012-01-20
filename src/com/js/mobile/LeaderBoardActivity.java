@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 
+import java.util.List;
+
 /**
  * Created by IntelliJ IDEA.
  * User: steveahlers
@@ -44,8 +46,10 @@ public class LeaderBoardActivity extends ListActivity {
         });
     }
     
-    private String[] retrievePlayers() {
+    private List<String> retrievePlayers() {
         // TODO: Replace with DataHandler calls
+
+        DataHandler.retrieveUsers();
 
         final String[] PLAYERS = new String[] {
                 "Superman", "JGyselinck", "SAhlers", "CodeMonkey", "GSDExpert",
@@ -61,6 +65,6 @@ public class LeaderBoardActivity extends ListActivity {
                 "Christmas Island", "Cocos (Keeling) Islands", "Colombia", "Comoros", "Congo"
         };
 
-        return PLAYERS;
+        return DataHandler.getAllUsers(); //PLAYERS;
     }
 }
