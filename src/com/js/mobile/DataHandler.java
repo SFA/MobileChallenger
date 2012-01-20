@@ -38,7 +38,6 @@ public class DataHandler {
         try{
             String url = baseUrl + "loginService.php";
             request = new HttpPost(url);
-//            request.setURI(new URI(url));
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
             nameValuePairs.add(new BasicNameValuePair("user", username));
             nameValuePairs.add(new BasicNameValuePair("pass", password));
@@ -102,24 +101,24 @@ public class DataHandler {
     }
     
     private static boolean sendChallengeEmail(String challengee, String challenger) {
-        return true;
-//        String result = null;
-//        HttpPost request = null;
-//
-//        try{
-//            String url = baseUrl + "sendChallengeEmail.php";
-//            request = new HttpPost(url);
-//            request.setURI(new URI(url));
-//            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-//            nameValuePairs.add(new BasicNameValuePair("challengee", challengee));
-//            nameValuePairs.add(new BasicNameValuePair("challenger", challenger));
-//            request.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-//            result = doPostRequest(request);
-//            return true;
-//        } catch (Exception ex){
-//            ex.printStackTrace();
-//            return false;
-//        }
+        String result = null;
+        HttpPost request = null;
+
+        try{
+            String url = baseUrl + "emailService.php";
+            request = new HttpPost(url);
+            request.setURI(new URI(url));
+            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+            nameValuePairs.add(new BasicNameValuePair("mailType", "challenge"));
+            nameValuePairs.add(new BasicNameValuePair("challengee", challengee));
+            nameValuePairs.add(new BasicNameValuePair("challenger", challenger));
+            request.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            result = doPostRequest(request);
+            return true;
+        } catch (Exception ex){
+            ex.printStackTrace();
+            return false;
+        }
     }
     
     private static String doPostRequest(HttpPost request){
