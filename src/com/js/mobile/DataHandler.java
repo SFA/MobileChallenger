@@ -34,7 +34,7 @@ import java.util.List;
  */
 public class DataHandler {
 //    private static String baseUrl = "http://10.0.2.2/mobilechallenger/";
-    private static String baseUrl = "http://172.16.0.9/mobilechallenger/";
+    private static String baseUrl = "http://192.168.1.75/mobilechallenger/";
 
     private static Hashtable<String, User> users = new Hashtable<String, User>();
 
@@ -249,7 +249,7 @@ public class DataHandler {
                 String id = mJsonObject.getString("id");
                 String challengee = mJsonObject.getString("challengee");
                 String challenger = mJsonObject.getString("challenger");
-                challenges.add(challengee + " vs " + challenger);
+                challenges.add(id + " : " + challengee + " vs " + challenger);
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -258,7 +258,7 @@ public class DataHandler {
         return challenges;
     }
 
-    public static void addOutcome(String challengee, String challenger,
+    public static void addOutcome(String challenge_id, String challengee, String challenger,
                                   String challengeePassword, String challengeeScore,
                                   String challengerScore, String trashTalk) {
         String result = null;
@@ -267,10 +267,11 @@ public class DataHandler {
         try{
             String url = baseUrl + "submitOutcome.php";
             request = new HttpPost(url);
-            request.setURI(new URI(url));
+//            request.setURI(new URI(url));
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-            nameValuePairs.add(new BasicNameValuePair("challengee", challengee));
-            nameValuePairs.add(new BasicNameValuePair("challenger", challenger));
+            nameValuePairs.add(new BasicNameValuePair("challenge_id", challenge_id));
+            nameValuePairs.add(new BasicNameValuePair("challenger_score", challengerScore));
+            nameValuePairs.add(new BasicNameValuePair("challengee_score", challengeeScore));
             request.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             result = doPostRequest(request);
         } catch (Exception ex){
@@ -278,7 +279,7 @@ public class DataHandler {
         }
     }
     
-    public static boolean postMatchResults(String challengee, String challenger,
+    public static boolean postMatchResults(String challenge_id, String challengee, String challenger,
                                            String challengeePassword, String challengeeScore,
                                            String challengerScore, String trashTalk) {
         boolean success = false;

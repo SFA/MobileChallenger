@@ -44,12 +44,13 @@ public class ChallengesActivity extends ListActivity {
                 Intent myIntent = new Intent(ChallengesActivity.this, ResultsActivity.class);
                 String challenge = (String) getListAdapter().getItem(position);
 
-                String challengee = challenge.substring(0, challenge.indexOf(" vs ")).trim();
+                String challenge_id = challenge.substring(0, challenge.indexOf(":")).trim();
+                String challengee = challenge.substring(challenge.indexOf(":"), challenge.indexOf(" vs ")).trim();
                 String challenger = challenge.substring(challenge.indexOf(" vs ") + 4, challenge.length());
 
                 // You are the Challenger so show your challenges
                 if(challenger.equalsIgnoreCase(userName)) {
-                    String[] extras = {challengee, challenger};
+                    String[] extras = {challenge_id, challengee, challenger};
                     myIntent.putExtra("extras", extras);
                     ChallengesActivity.this.startActivity(myIntent);
                 }

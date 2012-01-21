@@ -19,6 +19,7 @@ public class ResultsActivity extends Activity {
     
     private String challengee;
     private String challenger;
+    private String challenge_id;
     
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,8 +27,9 @@ public class ResultsActivity extends Activity {
         Intent intent = getIntent();
 
         String[] s = intent.getStringArrayExtra("extras");
-        challengee = s[0];
-        challenger = s[1];
+        challenge_id = s[0];
+        challengee = s[1];
+        challenger = s[2];
         
         //Load up the layout
         setContentView(R.layout.results);
@@ -51,7 +53,7 @@ public class ResultsActivity extends Activity {
                 String yourScore = ((EditText)findViewById(R.id.txt_your_score)).getText().toString();
                 String trashTalk = ((EditText)findViewById(R.id.txt_trash_talk)).getText().toString();
 
-                DataHandler.postMatchResults(challengee, challenger, password, oppScore, yourScore, trashTalk);
+                DataHandler.addOutcome(challenge_id, challengee, challenger, password, oppScore, yourScore, trashTalk);
             }
         });
     }
