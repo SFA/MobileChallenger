@@ -45,7 +45,7 @@ public class ChallengesActivity extends ListActivity {
                 String challenge = (String) getListAdapter().getItem(position);
 
                 String challenge_id = challenge.substring(0, challenge.indexOf(":")).trim();
-                String challengee = challenge.substring(challenge.indexOf(":"), challenge.indexOf(" vs ")).trim();
+                String challengee = challenge.substring(challenge.indexOf(":") + 1, challenge.indexOf(" vs ")).trim();
                 String challenger = challenge.substring(challenge.indexOf(" vs ") + 4, challenge.length());
 
                 // You are the Challenger so show your challenges
