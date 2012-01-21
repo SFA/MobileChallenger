@@ -48,8 +48,8 @@ public class LeaderBoardActivity extends ListActivity {
                 Intent myIntent = new Intent(LeaderBoardActivity.this, PlayerProfileActivity.class);
                 HashMap<String, String> profile = (HashMap<String, String>) getListAdapter().getItem(position);
                 String totalPlayers = Integer.toString(getListAdapter().getCount());
-                
-                String[] extras = {profile.get("username"), Integer.toString(++position), totalPlayers, userName};
+
+                String[] extras = {profile.get("username"), Integer.toString(++position), totalPlayers, userName, profile.get("wins"), profile.get("losses"), profile.get("fname"), profile.get("lname")};
                 
                 myIntent.putExtra("extras", extras);
                 LeaderBoardActivity.this.startActivity(myIntent);

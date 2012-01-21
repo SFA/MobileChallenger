@@ -38,12 +38,30 @@ public class PlayerProfileActivity extends Activity {
         String rank = s[1];
         String totalPlayers = s[2];
         userName = s[3];
+        String wins = s[4];
+        String losses = s[5];
+        String fname = s[6];
+        String lname = s[7];
 
+        //Set Profile Name at top of screen
         TextView profileNameTextView = (TextView) findViewById(R.id.txtProfileName);
         profileNameTextView.setText(profileName);
 
+        //Set rank based on position in the Leaderboard list
         TextView rankTextView = (TextView) findViewById(R.id.txtRank);
         rankTextView.setText(rank + " of " + totalPlayers);
+
+        //Set Record
+        TextView recordTextView = (TextView) findViewById(R.id.txtRecord);
+        recordTextView.setText("Wins: " + wins + ", Losses: " + losses);
+        
+        //Set First Name
+        TextView firstNameTextView = (TextView)findViewById(R.id.txtFirstName);
+        firstNameTextView.setText(fname);
+        
+        //Set Last Name
+        TextView lastNameTextView = (TextView)findViewById(R.id.txtLastName);
+        lastNameTextView.setText(lname);
 
         //get the button resource in the xml file and assign it to a local variable of type Button
         challenge = (Button) findViewById(R.id.buttonChallenge);
