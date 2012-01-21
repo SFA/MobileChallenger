@@ -36,6 +36,20 @@ public class ChallengesActivity extends ListActivity {
         ListView lv = getListView();
         lv.setTextFilterEnabled(true);
 
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Intent myIntent = new Intent(ChallengesActivity.this, ResultsActivity.class);
+                String profileName = (String) getListAdapter().getItem(position);
+                String totalPlayers = Integer.toString(getListAdapter().getCount());
+
+                String[] extras = {profileName, Integer.toString(++position), totalPlayers, userName};
+
+                myIntent.putExtra("extras", extras);
+                ChallengesActivity.this.startActivity(myIntent);
+            }
+        });
+
     }
 
     private List<String> retrieveChallenges() {
