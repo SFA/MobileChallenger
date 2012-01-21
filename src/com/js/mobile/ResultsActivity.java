@@ -51,8 +51,7 @@ public class ResultsActivity extends Activity {
                 String yourScore = ((EditText)findViewById(R.id.txt_your_score)).getText().toString();
                 String trashTalk = ((EditText)findViewById(R.id.txt_trash_talk)).getText().toString();
 
-                int x;
-//                DataHandler.postResults(password, oppScore, yourScore, trashTalk);
+                DataHandler.postMatchResults(password, oppScore, yourScore, trashTalk);
             }
         });
     }
