@@ -54,6 +54,10 @@ public class ResultsActivity extends Activity {
                 String trashTalk = ((EditText)findViewById(R.id.txt_trash_talk)).getText().toString();
 
                 DataHandler.addOutcome(challenge_id, challengee, challenger, password, oppScore, yourScore, trashTalk);
+
+                Intent myIntent = new Intent(getBaseContext(), LeaderBoardActivity.class);
+                myIntent.putExtra("userName", challenger);
+                startActivity(myIntent);
             }
         });
     }
