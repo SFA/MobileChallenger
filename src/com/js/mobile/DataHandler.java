@@ -202,4 +202,49 @@ public class DataHandler {
 
         return (sb.toString()).replace("\n", "");
     }
+
+    public static List<String> getChallenges(String userName) {
+        String result = null;
+        HttpPost request = null;
+
+        try{
+            String url = baseUrl + "getChallenges.php";
+            request = new HttpPost(url);
+            request.setURI(new URI(url));
+            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+            nameValuePairs.add(new BasicNameValuePair("username", userName));
+            request.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            result = doPostRequest(request);
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
+
+        result = doPostRequest(request);
+
+        JSONObject myjson = null;
+        JSONArray the_json_array = null;
+        try {
+            myjson = new JSONObject(result);
+            the_json_array = myjson.getJSONArray("data");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        
+        List<String> challenges = new ArrayList<String>();
+
+        JSONObject mJsonObject = new JSONObject();
+        try {
+            for(int i=0; i < the_json_array.length(); i++) {
+                mJsonObject = the_json_array.getJSONObject(i);
+                String id = mJsonObject.getString("id");
+                String challengee = mJsonObject.getString("challengee");
+                String challenger = mJsonObject.getString("challenger");
+                challenges.add(challengee + " vs " + challenger);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        
+        return challenges;
+    }
 }

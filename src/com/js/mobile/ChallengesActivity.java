@@ -26,20 +26,20 @@ public class ChallengesActivity extends ListActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setListAdapter(new ArrayAdapter<String>(this, R.layout.list_item, retrieveChallenges()));
-
-        ListView lv = getListView();
-        lv.setTextFilterEnabled(true);
-
         Intent intent = getIntent();
 
         String[] s = intent.getStringArrayExtra("extras");
         userName = s[0];
 
+        setListAdapter(new ArrayAdapter<String>(this, R.layout.list_item, retrieveChallenges()));
+
+        ListView lv = getListView();
+        lv.setTextFilterEnabled(true);
+
     }
 
     private List<String> retrieveChallenges() {
 
-        return DataHandler.getAllUsers();
+        return DataHandler.getChallenges(userName);
     }
 }
