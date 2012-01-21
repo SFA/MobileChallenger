@@ -5,7 +5,7 @@
               android:layout_width="fill_parent"
               android:layout_height="fill_parent">
     <TextView android:id="@+id/welcome_text"
-              android:text="SPARC Mobile Challenger"
+              android:text="SPARC Challenger"
               android:textColor="#FF9933"
               android:textSize="18px"
               android:layout_width="wrap_content"
