@@ -34,7 +34,7 @@ import java.util.List;
  */
 public class DataHandler {
 //    private static String baseUrl = "http://10.0.2.2/mobilechallenger/";
-    private static String baseUrl = "http://192.168.1.75/mobilechallenger/";
+    private static String baseUrl = "http://172.16.0.9/mobilechallenger/";
 
     private static Hashtable<String, User> users = new Hashtable<String, User>();
 
@@ -257,10 +257,36 @@ public class DataHandler {
         
         return challenges;
     }
-    
-    public static boolean postMatchResults(String oppPassword, String oppScore,
-                                           String yourScore, String trashTalk) {
 
-         return true;
+    public static void addOutcome(String challengee, String challenger,
+                                  String challengeePassword, String challengeeScore,
+                                  String challengerScore, String trashTalk) {
+        String result = null;
+        HttpPost request = null;
+
+        try{
+            String url = baseUrl + "submitOutcome.php";
+            request = new HttpPost(url);
+            request.setURI(new URI(url));
+            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+            nameValuePairs.add(new BasicNameValuePair("challengee", challengee));
+            nameValuePairs.add(new BasicNameValuePair("challenger", challenger));
+            request.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            result = doPostRequest(request);
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
+    
+    public static boolean postMatchResults(String challengee, String challenger,
+                                           String challengeePassword, String challengeeScore,
+                                           String challengerScore, String trashTalk) {
+        boolean success = false;
+        if (doLogin(challengee, challengeePassword)) {
+
+            success = true;
+        }
+
+        return success;
     }
 }
