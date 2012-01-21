@@ -34,7 +34,8 @@ import java.util.List;
  */
 public class DataHandler {
     private static String baseUrl = "http://10.0.2.2/mobilechallenger/";
-    
+//    private static String baseUrl = "http://192.168.1.75/mobilechallenger/";
+
     private static Hashtable<String, User> users = new Hashtable<String, User>();
 
     public static boolean doLogin(String username, String password){
