@@ -79,7 +79,7 @@ public class PlayerProfileActivity extends Activity {
         public void onClick(View view) {
             Intent myIntent = new Intent(PlayerProfileActivity.this, ChallengesActivity.class);
 
-            String[] extras = {profileName};
+            String[] extras = {profileName, userName};
 
             myIntent.putExtra("extras", extras);
             PlayerProfileActivity.this.startActivity(myIntent);

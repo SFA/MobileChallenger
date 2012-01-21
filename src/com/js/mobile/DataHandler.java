@@ -257,4 +257,10 @@ public class DataHandler {
         
         return challenges;
     }
+    
+    public static boolean postMatchResults(String oppPassword, String oppScore,
+                                           String yourScore, String trashTalk) {
+
+         return true;
+    }
 }
