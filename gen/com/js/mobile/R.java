@@ -12,22 +12,23 @@ public final class R {
     }
     public static final class id {
         public static final int buttonChallenge=0x7f040019;
-        public static final int email_text=0x7f040022;
-        public static final int fname_text=0x7f04001e;
-        public static final int lname_text=0x7f040020;
+        public static final int buttonShowChallenges=0x7f04001c;
+        public static final int email_text=0x7f040023;
+        public static final int fname_text=0x7f04001f;
+        public static final int lname_text=0x7f040021;
         public static final int login_button=0x7f040005;
         public static final int password_text=0x7f040003;
-        public static final int reg_text=0x7f04001d;
+        public static final int reg_text=0x7f04001e;
         public static final int register_button=0x7f040006;
-        public static final int register_submit_button=0x7f040024;
+        public static final int register_submit_button=0x7f040025;
         public static final int txtFirstName=0x7f040013;
         public static final int txtLastName=0x7f040016;
         public static final int txtProfileName=0x7f04000a;
         public static final int txtRank=0x7f04000c;
         public static final int txtRecord=0x7f04000f;
-        public static final int txt_email=0x7f040023;
-        public static final int txt_fname=0x7f04001f;
-        public static final int txt_lname=0x7f040021;
+        public static final int txt_email=0x7f040024;
+        public static final int txt_fname=0x7f040020;
+        public static final int txt_lname=0x7f040022;
         public static final int txt_password=0x7f040004;
         public static final int txt_username=0x7f040002;
         public static final int username_text=0x7f040001;
@@ -47,14 +48,15 @@ public final class R {
         public static final int widget663=0x7f040018;
         public static final int widget665=0x7f04001a;
         public static final int widget666=0x7f04001b;
-        public static final int widget687=0x7f04001c;
+        public static final int widget687=0x7f04001d;
     }
     public static final class layout {
-        public static final int list_item=0x7f020000;
-        public static final int login=0x7f020001;
-        public static final int main=0x7f020002;
-        public static final int player_profile=0x7f020003;
-        public static final int register=0x7f020004;
+        public static final int challenges=0x7f020000;
+        public static final int list_item=0x7f020001;
+        public static final int login=0x7f020002;
+        public static final int main=0x7f020003;
+        public static final int player_profile=0x7f020004;
+        public static final int register=0x7f020005;
     }
     public static final class string {
         public static final int app_name=0x7f030000;

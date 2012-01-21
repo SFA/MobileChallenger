@@ -23,7 +23,8 @@ public class PlayerProfileActivity extends Activity {
     private String userName;
     private String profileName;
     private Button challenge = null;
-    
+    private Button showChallenges = null;
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -45,37 +46,46 @@ public class PlayerProfileActivity extends Activity {
         rankTextView.setText(rank + " of " + totalPlayers);
 
         //get the button resource in the xml file and assign it to a local variable of type Button
-        challenge = (Button)findViewById(R.id.buttonChallenge);
-        if(userName.equalsIgnoreCase(profileName)) {
+        challenge = (Button) findViewById(R.id.buttonChallenge);
+        showChallenges = (Button) findViewById(R.id.buttonShowChallenges);
+
+        if (userName.equalsIgnoreCase(profileName)) {
             challenge.setClickable(false);
             challenge.setVisibility(View.GONE);
         }
 
-        //this is the action listener
         challenge.setOnClickListener(new View.OnClickListener() {
-
             public void onClick(View view) {
-
-                new AlertDialog.Builder( PlayerProfileActivity.this )
+                new AlertDialog.Builder(PlayerProfileActivity.this)
                         .setTitle("Challenge")
-                        .setMessage( "Are you sure you want to challenge " + profileName + "?")
-                        .setPositiveButton( "Bring it on!", new DialogInterface.OnClickListener() {
+                        .setMessage("Are you sure you want to challenge " + profileName + "?")
+                        .setPositiveButton("Bring it on!", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 requestAChallenge();
                                 challenge.setClickable(false);
                             }
                         })
-                        .setNegativeButton( "I'm scared", new DialogInterface.OnClickListener() {
+                        .setNegativeButton("I'm scared", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 TextView tempTextView = (TextView) findViewById(R.id.txtFirstName);
                                 tempTextView.setText("");
                             }
-                        } )
+                        })
                         .show();
-
             }
-        }); //end of launch.setOnclickListener
-    }
+        });
+
+    showChallenges.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View view) {
+            Intent myIntent = new Intent(PlayerProfileActivity.this, ChallengesActivity.class);
+
+            String[] extras = {profileName};
+
+            myIntent.putExtra("extras", extras);
+            PlayerProfileActivity.this.startActivity(myIntent);
+        }
+    });
+}
 
     private void requestAChallenge() {
         DataHandler.doChallenge(profileName, userName);
