@@ -21,10 +21,13 @@ public final class R {
         public static final int login_button=0x7f04000b;
         public static final int losses=0x7f040005;
         public static final int lossesLabel=0x7f040004;
+        public static final int opp_score_text=0x7f04002d;
         public static final int password_text=0x7f040009;
         public static final int reg_text=0x7f040024;
         public static final int register_button=0x7f04000c;
         public static final int register_submit_button=0x7f04002b;
+        public static final int score_it_button=0x7f040033;
+        public static final int trash_talk_text=0x7f040031;
         public static final int txtFirstName=0x7f040019;
         public static final int txtLastName=0x7f04001c;
         public static final int txtProfileName=0x7f040010;
@@ -33,9 +36,13 @@ public final class R {
         public static final int txt_email=0x7f04002a;
         public static final int txt_fname=0x7f040026;
         public static final int txt_lname=0x7f040028;
+        public static final int txt_opp_score=0x7f04002e;
         public static final int txt_password=0x7f04000a;
+        public static final int txt_trash_talk=0x7f040032;
         public static final int txt_username=0x7f040008;
+        public static final int txt_your_score=0x7f040030;
         public static final int username_text=0x7f040007;
+        public static final int versus_text=0x7f04002c;
         public static final int welcome_text=0x7f040006;
         public static final int widget647=0x7f04000d;
         public static final int widget648=0x7f04000e;
@@ -55,16 +62,17 @@ public final class R {
         public static final int widget687=0x7f040023;
         public static final int wins=0x7f040003;
         public static final int winsLabel=0x7f040002;
+        public static final int your_score_text=0x7f04002f;
     }
     public static final class layout {
-        public static final int challenges=0x7f020000;
-        public static final int custom_leader_list_item=0x7f020001;
-        public static final int leaderboard_listview=0x7f020002;
-        public static final int list_item=0x7f020003;
-        public static final int login=0x7f020004;
-        public static final int main=0x7f020005;
-        public static final int player_profile=0x7f020006;
-        public static final int register=0x7f020007;
+        public static final int custom_leader_list_item=0x7f020000;
+        public static final int leaderboard_listview=0x7f020001;
+        public static final int list_item=0x7f020002;
+        public static final int login=0x7f020003;
+        public static final int main=0x7f020004;
+        public static final int player_profile=0x7f020005;
+        public static final int register=0x7f020006;
+        public static final int results=0x7f020007;
     }
     public static final class string {
         public static final int app_name=0x7f030000;
