@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -23,15 +25,24 @@ public class LeaderBoardActivity extends ListActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setListAdapter(new ArrayAdapter<String>(this, R.layout.list_item, retrievePlayers()));
+//        setListAdapter(new ArrayAdapter<String>(this, R.layout.list_item, retrievePlayers()));
+        
+        setContentView(R.layout.leaderboard_listview);
+//        ListView lv = getListView();
+//        lv.setTextFilterEnabled(true);
+        
+        SimpleAdapter adapter = new SimpleAdapter(this, 
+                                                  retrievePlayers(), 
+                                                  R.layout.custom_leader_list_item,
+                                                  new String[]{"fname", "lname", "wins", "losses"},
+                                                  new int[]{R.id.fname, R.id.lname, R.id.wins, R.id.losses});
 
-        ListView lv = getListView();
-        lv.setTextFilterEnabled(true);
+        setListAdapter(adapter);
         
         Intent intent = getIntent();
         userName = intent.getStringExtra("userName");
 
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 Intent myIntent = new Intent(LeaderBoardActivity.this, PlayerProfileActivity.class);
@@ -46,7 +57,7 @@ public class LeaderBoardActivity extends ListActivity {
         });
     }
     
-    private List<String> retrievePlayers() {
+    private ArrayList<HashMap<String,String>> retrievePlayers() {
         // Load up the Users in DataHandler
         DataHandler.retrieveUsers();
 

@@ -8,8 +8,8 @@
  */
 
     $mysqli = new mysqli("localhost", "mobilechallenger", "sparcmobile", "mobilechallenger");
-    $user = $_POST['user'];
-    $pass = $_POST['pass'];
+//    $user = $_REQUEST['user'];
+//    $pass = $_REQUEST['pass'];
     $preparedStatement = $mysqli->prepare("SELECT * FROM mobilechallengeuser");
     $preparedStatement->execute();
 

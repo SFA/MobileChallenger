@@ -33,8 +33,8 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class DataHandler {
-    private static String baseUrl = "http://10.0.2.2/mobilechallenger/";
-//    private static String baseUrl = "http://192.168.1.75/mobilechallenger/";
+//    private static String baseUrl = "http://10.0.2.2/mobilechallenger/";
+    private static String baseUrl = "http://192.168.1.75/mobilechallenger/";
 
     private static Hashtable<String, User> users = new Hashtable<String, User>();
 
@@ -69,7 +69,8 @@ public class DataHandler {
         HttpPost request = null;
 
         try{
-            String url = baseUrl + "getUsers.php";
+//            String url = baseUrl + "getUsers.php";
+            String url = baseUrl + "leaderboard.php";
             request = new HttpPost(url);
         } catch (Exception ex){
             ex.printStackTrace();
@@ -77,11 +78,12 @@ public class DataHandler {
 
         result = doPostRequest(request);
 
-        JSONObject myjson = null;
+//        JSONObject myjson = null;
         JSONArray the_json_array = null;
         try {
-            myjson = new JSONObject(result);
-            the_json_array = myjson.getJSONArray("data");
+//            myjson = new JSONObject(result);
+//            the_json_array = myjson.getJSONArray("data");
+            the_json_array = new JSONArray(result);
         } catch (JSONException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
@@ -91,11 +93,12 @@ public class DataHandler {
             for(int i=0; i < the_json_array.length(); i++) {
                 mJsonObject = the_json_array.getJSONObject(i);
                 String username = mJsonObject.getString("username");
-                String fname = mJsonObject.getString("fname");
-                String lname = mJsonObject.getString("lname");
-                String password = mJsonObject.getString("password");
+                String fname = mJsonObject.getString("first_name");
+                String lname = mJsonObject.getString("last_name");
                 String email = mJsonObject.getString("email");
-                User user = new User(username, lname, fname, password, email);
+                int wins = mJsonObject.getInt("Wins");
+                int losses = mJsonObject.getInt("Losses");
+                User user = new User(username, lname, fname, email, wins, losses);
                 users.put(username, user);
             }
         } catch (JSONException e) {
@@ -103,10 +106,16 @@ public class DataHandler {
         }
     }
 
-    public static List<String> getAllUsers() {
-        ArrayList<String> userNames = new ArrayList<String>();
+    public static ArrayList<HashMap<String,String>> getAllUsers() {
+        ArrayList<HashMap<String,String>> userNames = new ArrayList<HashMap<String,String>>();
         for(User u : users.values()) {
-            userNames.add(u.getUserName());
+            HashMap<String, String> userMap = new HashMap<String, String>();
+            userMap.put("username", u.getUserName());
+            userMap.put("fname", u.getFirstName());
+            userMap.put("lname", u.getLastName());
+            userMap.put("wins", Integer.toString(u.getWins()));
+            userMap.put("losses", Integer.toString(u.getLosses()));
+            userNames.add(userMap);
         }
         return userNames;
     }

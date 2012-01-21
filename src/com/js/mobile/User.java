@@ -8,19 +8,21 @@ package com.js.mobile;
  * To change this template use File | Settings | File Templates.
  */
 public class User {
-    
-    String userName;
-    String lastName;
-    String firstName;
-    String password;
-    String email;
 
-    public User(String userName, String lastName, String firstName, String password, String email) {
+    private String userName;
+    private String lastName;
+    private String firstName;
+    private String email;
+    private int wins = 0;
+    private int losses = 0;
+
+    public User(String userName, String lastName, String firstName, String email, int wins, int losses) {
         this.userName = userName;
         this.lastName = lastName;
         this.firstName = firstName;
-        this.password = password;
         this.email = email;
+        this.wins = wins;
+        this.losses = losses;
     }
 
     public String getUserName() {
@@ -47,19 +49,27 @@ public class User {
         this.firstName = firstName;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getWins() {
+        return wins;
+    }
+
+    public void setWins(int wins) {
+        this.wins = wins;
+    }
+
+    public int getLosses() {
+        return losses;
+    }
+
+    public void setLosses(int losses) {
+        this.losses = losses;
     }
 }
