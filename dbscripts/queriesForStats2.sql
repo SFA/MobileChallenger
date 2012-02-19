@@ -10,12 +10,11 @@ select m.username,
         then "W"
         else "L"
        end "Result"
-    from mobilechallengeuser m, 
-         challenge c,
+    from mobilechallengeuser m right join challenge c on m.username = c.challenger
          matches ma,
          game g,
          outcome o
-     where m.username = c.challengee
+     where m right join c on c.challenger = m.username
             and c.id = ma.challenge_id
             and ma.id = g.match_id
             and g.id = o.game_id;
@@ -26,3 +25,5 @@ select * from challenge;
 select * from mobilechallengeuser;
 
 select * from matches;
+
+select * from mobilechallengeuser m left join challenge c on m.username = c.challenger;

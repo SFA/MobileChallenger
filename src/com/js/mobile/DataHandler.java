@@ -34,7 +34,8 @@ import java.util.List;
  */
 public class DataHandler {
 //    private static String baseUrl = "http://10.0.2.2/mobilechallenger/";
-    private static String baseUrl = "http://192.168.1.75/mobilechallenger/";
+    private static String baseUrl = "http://192.168.1.172/mobilechallenger/";
+//    private static String baseUrl = "http://192.168.8.160/mobilechallenger/";
 
     private static Hashtable<String, User> users = new Hashtable<String, User>();
 
@@ -137,7 +138,7 @@ public class DataHandler {
             nameValuePairs.add(new BasicNameValuePair("pass", password));
             nameValuePairs.add(new BasicNameValuePair("email", email));
             nameValuePairs.add(new BasicNameValuePair("fname", fname));
-            nameValuePairs.add(new BasicNameValuePair("pass", lname));
+            nameValuePairs.add(new BasicNameValuePair("lname", lname));
             request.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             result = doPostRequest(request);
             return true;
@@ -278,7 +279,8 @@ public class DataHandler {
             ex.printStackTrace();
         }
     }
-    
+
+    @Deprecated
     public static boolean postMatchResults(String challenge_id, String challengee, String challenger,
                                            String challengeePassword, String challengeeScore,
                                            String challengerScore, String trashTalk) {
